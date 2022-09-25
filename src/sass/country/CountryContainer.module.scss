@@ -1,0 +1,9 @@
+@use '../mixins' as mix;
+
+.container {
+  @include mix.container();
+}
+
+.countries-section {
+  padding: 6.4rem 0 3.2rem 0;
+}
