@@ -1,0 +1,26 @@
+@use '../mixins' as mix;
+@use '../variables' as var;
+
+.container {
+  @include mix.container();
+  @include mix.make-flex(row, 0, space-between, center);
+}
+
+.header {
+  padding: 1.6rem 0;
+  box-shadow: 0 0.75rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.light.header {
+  background-color: var.$light-mode-bg;
+  color: var.$light-mode-text;
+}
+
+.dark.header {
+  background-color: var.$dark-mode-bg;
+  color: var.$dark-mode-text;
+}
+
+.logo {
+  font-size: 3rem;
+}
