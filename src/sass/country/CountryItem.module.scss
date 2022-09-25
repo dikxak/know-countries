@@ -1,0 +1,33 @@
+@use '../variables' as var;
+
+.country-item-container {
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.light.country-item-container {
+  background-color: var.$light-mode-bg;
+  color: var.$light-mode-text;
+}
+
+.dark.country-item-container {
+  background-color: var.$dark-mode-elem;
+  color: var.$dark-mode-text;
+}
+
+.country-info {
+  padding: 1.6rem 2.4rem;
+}
+
+.country-name {
+  font-size: 2rem;
+  margin-bottom: 2.4rem;
+}
+
+.country-text {
+  font-size: 1.6rem;
+}
+
+.country-text:not(:last-child) {
+  margin-bottom: 1.2rem;
+}
