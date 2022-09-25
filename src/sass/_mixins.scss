@@ -30,9 +30,9 @@
   $padding-vertical: 0,
   $padding-horizontal: 0,
   $margin-vertical: 0,
-  $margin-horizontal: 0
+  $margin-horizontal: auto
 ) {
-  max-width: 1440px;
+  max-width: 144rem;
   margin: $margin-vertical $margin-horizontal;
   padding: $padding-vertical $padding-horizontal;
 }
