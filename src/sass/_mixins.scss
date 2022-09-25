@@ -1,0 +1,38 @@
+@mixin make-flex(
+  $direction: row,
+  $gap: 0,
+  $justify: flex-start,
+  $align: stretch
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin make-grid(
+  $columns: 1fr,
+  $column-gap: 0,
+  $row-gap: 0,
+  $justify: start,
+  $align: stretch
+) {
+  display: grid;
+  grid-template-columns: $columns;
+  row-gap: $row-gap;
+  column-gap: $column-gap;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+@mixin container(
+  $padding-vertical: 0,
+  $padding-horizontal: 0,
+  $margin-vertical: 0,
+  $margin-horizontal: 0
+) {
+  max-width: 1440px;
+  margin: $margin-vertical $margin-horizontal;
+  padding: $padding-vertical $padding-horizontal;
+}
