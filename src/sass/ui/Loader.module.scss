@@ -1,0 +1,41 @@
+@use '../variables' as var;
+
+.loader-container {
+  width: 50%;
+  margin: 0 auto;
+
+  padding: 2.4rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  width: 6.4rem;
+  height: 6.4rem;
+
+  border-radius: 50%;
+
+  animation: rotate 1s linear infinite;
+}
+
+.light.loader {
+  border: 0.6rem solid var.$dark-mode-elem;
+  border-color: var.$dark-mode-elem transparent var.$dark-mode-elem transparent;
+}
+
+.dark.loader {
+  border: 0.6rem solid var.$light-mode-bg;
+  border-color: var.$light-mode-bg transparent var.$light-mode-bg transparent;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+} ;
