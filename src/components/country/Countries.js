@@ -12,9 +12,9 @@ const Countries = props => {
 
   const data = props.countryData;
 
-  const navigateToDetailPage = countryName => {
+  const navigateToDetailPage = (countryCode, countryName) => {
     navigate(`/country/${countryName.toLowerCase()}`, {
-      state: { name: countryName.toLowerCase() },
+      state: { countryCode: countryCode.toLowerCase() },
     });
   };
 
@@ -29,7 +29,13 @@ const Countries = props => {
             population={country.population}
             region={country.region}
             capital={country.capital}
-            onClick={navigateToDetailPage.bind(null, country.name.common)}
+            role="link"
+            tabIndex="0"
+            onClick={navigateToDetailPage.bind(
+              null,
+              country.cioc,
+              country.name.common
+            )}
           />
         );
       })}

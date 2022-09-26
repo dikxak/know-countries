@@ -1,0 +1,85 @@
+@use '../mixins' as mix;
+@use '../variables' as var;
+
+.btn-back:link,
+.btn-back:visited {
+  display: inline-block;
+
+  padding: 0.8rem 2.4rem;
+  margin-bottom: 6.4rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  font-size: 1.8rem;
+
+  color: var.$light-mode-text;
+
+  border-radius: 0.5rem;
+}
+
+.light.btn-back:link,
+.light.btn-back:visited {
+  color: var.$light-mode-text;
+  background-color: var.$light-mode-bg;
+}
+
+.dark.btn-back:link,
+.dark.btn-back:visited {
+  color: var.$dark-mode-text;
+  background-color: var.$dark-mode-bg;
+}
+
+.container {
+  @include mix.container(8rem, 3.2rem, 0, auto);
+}
+
+.country-content {
+  @include mix.make-grid(repeat(2, 1fr), 9.6rem, 6.4rem, center, center);
+}
+
+.country-flag img {
+  aspect-ratio: 5 / 3;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+}
+
+.country-name {
+  font-size: 3.6rem;
+  margin-bottom: 4.8rem;
+}
+
+.light.country-details {
+  color: var.$light-mode-text;
+}
+
+.dark.country-details {
+  color: var.$dark-mode-text;
+}
+
+.country-details {
+  @include mix.make-flex(row, 6.4rem);
+
+  font-size: 1.8rem;
+  margin-bottom: 4.8rem;
+}
+
+.country-detail-1,
+.country-detail-2 {
+  @include mix.make-flex(column, 1.4rem, flex-start);
+}
+
+.country-detail-text {
+  line-height: 1.6;
+}
+
+.border-countries {
+  font-size: 1.8rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+}
+
+.country-error {
+  font-size: 3rem;
+  text-align: center;
+  margin-top: 8rem;
+}

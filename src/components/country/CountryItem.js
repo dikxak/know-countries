@@ -8,6 +8,8 @@ const CountryItem = props => {
   const { flags, name, population, region, capital } = props;
   return (
     <Card
+      role={props.role}
+      tabIndex={props.tabIndex}
       onClick={props.onClick}
       className={`${classes['country-item-container']} ${classes['light']}`}
     >
