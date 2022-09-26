@@ -5,25 +5,24 @@ import Card from '../ui/Card/Card';
 import classes from '../../sass/country/CountryItem.module.scss';
 
 const CountryItem = props => {
+  const { flags, name, population, region, capital } = props;
   return (
     <Card
       className={`${classes['country-item-container']} ${classes['light']}`}
     >
       <div className={`${classes['country-flag']}`}>
-        <img
-          src="https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1280px-Flag_of_the_United_States.svg.png"
-          alt="USA Flag"
-        />
+        <img src={flags.svg} alt={`${name.common} Flag`} />
         <div className={classes['country-info']}>
-          <h3 className={classes['country-name']}>USA</h3>
+          <h3 className={classes['country-name']}>{name.common}</h3>
           <p className={classes['country-text']}>
-            👫 <strong>Population: </strong> 323,947,000
+            👫 <strong>Population: </strong> {population}
           </p>
           <p className={classes['country-text']}>
-            🌎 <strong>Region: </strong>Americas
+            🌎 <strong>Region: </strong>
+            {region}
           </p>
           <p className={classes['country-text']}>
-            🗺 <strong>Capital: </strong> Washington,D.C.
+            🗺 <strong>Capital: </strong> {capital}
           </p>
         </div>
       </div>
