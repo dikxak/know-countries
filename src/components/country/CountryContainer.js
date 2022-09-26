@@ -51,7 +51,9 @@ const CountryContainer = props => {
     >
       <CountryInput getCountryName={getCountryName} />
       {countryError ? (
-        <p className="error-msg">Something went wrong 😟.</p>
+        <p className={`error-msg ${classes['country-error']}`}>
+          😟 Could not fetch countries data.
+        </p>
       ) : (
         <Countries countryData={countryData} />
       )}
