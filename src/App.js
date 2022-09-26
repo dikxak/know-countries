@@ -1,15 +1,16 @@
 import React from 'react';
 
-import Navbar from './components/ui/Navbar/Navbar';
+import { Routes, Route } from 'react-router-dom';
 
-import CountryContainer from './components/country/CountryContainer';
+import HomePage from './pages/HomePage';
+import CountryDetail from './pages/CountryDetail';
 
 const App = () => {
   return (
-    <div>
-      <Navbar className="light" />
-      <CountryContainer />
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/country/:name" element={<CountryDetail />} />
+    </Routes>
   );
 };
 
