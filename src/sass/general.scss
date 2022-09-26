@@ -11,3 +11,9 @@
 .grid--4-cols {
   @include mix.make-grid(repeat(4, 1fr), 6.4rem, 6.4rem);
 }
+
+.error-msg {
+  font-size: 1.6rem;
+  color: #e03131;
+  margin-top: 1.6rem;
+}
