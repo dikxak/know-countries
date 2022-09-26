@@ -1,14 +1,31 @@
 import React, { useState } from 'react';
 
-import classes from '../../sass/country/CountryInput.module.scss';
-
 import { BsSearch } from 'react-icons/bs';
+
+import classes from '../../sass/country/CountryInput.module.scss';
+import '../../sass/general.scss';
 
 const CountryInput = props => {
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchQueryFocused, setSearchQueryFocused] = useState(false);
+
+  const searchQueryIsValid = searchQuery.trim().length > 0;
+  const searchQueryHasError = searchQueryFocused && !searchQueryIsValid;
+
+  const searchQueryChangeHandler = e => {
+    setSearchQueryFocused(true);
+    setSearchQuery(e.target.value);
+  };
+
+  const searchBlurHandler = e => {
+    setSearchQueryFocused(true);
+  };
 
   const countryNameSubmitHandler = e => {
     e.preventDefault();
+
+    setSearchQueryFocused(true);
+    if (!searchQueryIsValid) return;
 
     props.getCountryName(searchQuery);
   };
@@ -16,18 +33,22 @@ const CountryInput = props => {
   return (
     <form
       onSubmit={countryNameSubmitHandler}
-      className={`${classes['search-form']} ${classes['light']}`}
+      className={`${classes['search-form']}`}
     >
-      <div className={classes['form-control']}>
+      <div className={`${classes['form-control']} ${classes['light']}`}>
         <label>
           <BsSearch className={classes['search-icon']} />
         </label>
         <input
-          onChange={e => setSearchQuery(e.target.value)}
+          onChange={searchQueryChangeHandler}
+          onBlur={searchBlurHandler}
           type="search"
           placeholder="Search for a country..."
         />
       </div>
+      {searchQueryHasError && (
+        <p className="error-msg">Search input should not be empty.</p>
+      )}
     </form>
   );
 };
