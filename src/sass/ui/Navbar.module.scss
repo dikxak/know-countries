@@ -17,10 +17,70 @@
 }
 
 .dark.header {
-  background-color: var.$dark-mode-bg;
+  background-color: var.$dark-mode-elem;
   color: var.$dark-mode-text;
 }
 
 .logo {
   font-size: 3rem;
+}
+
+.theme-mode {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+
+  position: relative;
+  cursor: pointer;
+}
+
+.theme-mode-text {
+  font-size: 1.6rem;
+}
+
+.theme-mode input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+}
+
+.theme-control {
+  height: 2.4rem;
+  width: 5.2rem;
+  border-radius: 100rem;
+
+  position: relative;
+}
+
+.light.theme-control {
+  background-color: var.$dark-mode-elem;
+}
+
+.dark.theme-control {
+  background-color: var.$dark-mode-text;
+}
+
+.theme-control::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translateY(-50%);
+  width: 1.8rem;
+  height: 1.8rem;
+
+  border-radius: 50%;
+  background-color: var.$light-mode-bg;
+
+  transition: all 0.15s linear;
+}
+
+.theme-mode input:checked ~ .theme-control::after {
+  left: 60%;
+}
+
+.theme-mode input:checked ~ .dark.theme-control::after {
+  background-color: var.$dark-mode-bg;
 }

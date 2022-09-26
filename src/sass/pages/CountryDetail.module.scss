@@ -10,8 +10,6 @@
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
   font-size: 1.8rem;
 
-  color: var.$light-mode-text;
-
   border-radius: 0.5rem;
 }
 
@@ -24,7 +22,7 @@
 .dark.btn-back:link,
 .dark.btn-back:visited {
   color: var.$dark-mode-text;
-  background-color: var.$dark-mode-bg;
+  background-color: var.$dark-mode-elem;
 }
 
 .container {
@@ -45,11 +43,11 @@
   margin-bottom: 4.8rem;
 }
 
-.light.country-details {
+.light.country-info {
   color: var.$light-mode-text;
 }
 
-.dark.country-details {
+.dark.country-info {
   color: var.$dark-mode-text;
 }
 

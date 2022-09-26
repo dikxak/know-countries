@@ -23,17 +23,7 @@
   color: var.$dark-mode-text;
 }
 
-.search-icon {
-  width: 2rem;
-  height: 2rem;
-}
-
-.dark.search-form input {
-  color: var.$dark-mode-text;
-  caret-color: var.$dark-mode-text;
-}
-
-.search-form input {
+.form-control input {
   display: inline-block;
   width: 100%;
   padding: 1.6rem;
@@ -43,6 +33,20 @@
   background-color: transparent;
 }
 
-.search-form input:focus {
+.dark.form-control input {
+  color: var.$dark-mode-text;
+  caret-color: var.$dark-mode-text;
+}
+
+.dark.form-control input::placeholder {
+  color: var.$dark-mode-input-placeholder;
+}
+
+.form-control input:focus {
   outline: none;
+}
+
+.search-icon {
+  width: 2rem;
+  height: 2rem;
 }

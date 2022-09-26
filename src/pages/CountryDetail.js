@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import Navbar from '../components/ui/Navbar/Navbar';
 import Loader from '../components/ui/Loader/Loader';
+
+import ThemeModeContext from '../context/ThemeModeContext/theme-mode-context';
 
 import '../sass/general.scss';
 import classes from '../sass/pages/CountryDetail.module.scss';
 
 const countryAlphaURL = 'https://restcountries.com/v3.1/alpha/';
 
-const CountryDetail = props => {
+const CountryDetail = () => {
+  const themeCtx = useContext(ThemeModeContext);
+
   const [countryData, setCountryData] = useState();
   const [isLoading, setIsLoading] = useState();
   const [countryError, setCountryError] = useState(false);
@@ -74,7 +78,10 @@ const CountryDetail = props => {
       <Navbar />
       {
         <div className={classes['container']}>
-          <NavLink to="/" className={classes['btn-back']}>
+          <NavLink
+            to="/"
+            className={`${classes['btn-back']} ${classes[themeCtx.themeMode]}`}
+          >
             &larr; Back
           </NavLink>
           {isLoading ? (
@@ -90,7 +97,11 @@ const CountryDetail = props => {
                   <img src={flags.svg} alt={`${name.common} flag`} />
                 </div>
 
-                <div className={classes['country-info']}>
+                <div
+                  className={`${classes['country-info']} ${
+                    classes[themeCtx.themeMode]
+                  }`}
+                >
                   <h2 className={classes['country-name']}>{name.common}</h2>
                   <div className={classes['country-details']}>
                     <div className={classes['country-detail-1']}>
@@ -150,7 +161,7 @@ const CountryDetail = props => {
                     <strong>Border countries: </strong>
                     {borders &&
                       borders.map((el, i) => (
-                        <span key={i} className="tag">
+                        <span key={i} className={`tag ${themeCtx.themeMode}`}>
                           {el}
                         </span>
                       ))}

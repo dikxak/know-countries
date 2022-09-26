@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+import ThemeModeContext from '../../context/ThemeModeContext/theme-mode-context';
 
 import { BsSearch } from 'react-icons/bs';
 
@@ -6,6 +8,8 @@ import classes from '../../sass/country/CountryInput.module.scss';
 import '../../sass/general.scss';
 
 const CountryInput = props => {
+  const themeCtx = useContext(ThemeModeContext);
+
   const [searchQuery, setSearchQuery] = useState('');
   const [searchQueryFocused, setSearchQueryFocused] = useState(false);
 
@@ -35,7 +39,9 @@ const CountryInput = props => {
       onSubmit={countryNameSubmitHandler}
       className={`${classes['search-form']}`}
     >
-      <div className={`${classes['form-control']} ${classes['light']}`}>
+      <div
+        className={`${classes['form-control']} ${classes[themeCtx.themeMode]}`}
+      >
         <label>
           <BsSearch className={classes['search-icon']} />
         </label>
