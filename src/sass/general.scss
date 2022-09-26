@@ -1,13 +1,13 @@
 @use './mixins' as mix;
 
 .grid--2-cols {
-  @include mix.make-grid(repeat(2, 1fr), 3.2rem, 4.8rem);
+  @include mix.make-grid(repeat(2, 1fr), 6.4rem, 6.4rem);
 }
 
 .grid--3-cols {
-  @include mix.make-grid(repeat(3, 1fr), 3.2rem, 4.8rem);
+  @include mix.make-grid(repeat(3, 1fr), 6.4rem, 6.4rem);
 }
 
 .grid--4-cols {
-  @include mix.make-grid(repeat(4, 1fr), 3.2rem, 4.8rem);
+  @include mix.make-grid(repeat(4, 1fr), 6.4rem, 6.4rem);
 }
