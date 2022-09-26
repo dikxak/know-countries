@@ -15,6 +15,10 @@
   color: var.$dark-mode-text;
 }
 
+.country-flag img {
+  aspect-ratio: 3 / 2;
+}
+
 .country-info {
   padding: 1.6rem 2.4rem;
 }
