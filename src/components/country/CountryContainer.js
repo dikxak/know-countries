@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import CountryInput from './CountryInput';
 import Countries from './Countries';
 
+import '../../sass/general.scss';
 import classes from '../../sass/country/CountryContainer.module.scss';
 
 const allCountriesURL = 'https://restcountries.com/v3.1/all';
@@ -10,24 +11,38 @@ const oneCountryURL = 'https://restcountries.com/v3.1/name/';
 
 const CountryContainer = props => {
   const [countryData, setCountryData] = useState([]);
+  const [countryError, setCountryError] = useState(false);
 
   useEffect(() => {
     const getAllCountriesData = async () => {
-      const response = await fetch(allCountriesURL);
-      const data = await response.json();
+      try {
+        const response = await fetch(allCountriesURL);
 
-      setCountryData(data);
+        if (!response.ok) throw new Error('Something went wrong 😟.');
+
+        const data = await response.json();
+
+        setCountryData(data);
+      } catch (err) {
+        setCountryError(true);
+      }
     };
 
     getAllCountriesData();
   }, []);
 
   const getCountryName = async cName => {
-    const response = await fetch(`${oneCountryURL}${cName}`);
-    const data = await response.json();
-    console.log(data);
+    try {
+      const response = await fetch(`${oneCountryURL}${cName}`);
 
-    setCountryData(data);
+      if (!response.ok) throw new Error('Something went wrong 😟.');
+
+      const data = await response.json();
+
+      setCountryData(data);
+    } catch (err) {
+      setCountryError(true);
+    }
   };
 
   return (
@@ -35,7 +50,11 @@ const CountryContainer = props => {
       className={`${classes['countries-section']} ${classes['container']}`}
     >
       <CountryInput getCountryName={getCountryName} />
-      <Countries countryData={countryData} />
+      {countryError ? (
+        <p className="error-msg">Something went wrong 😟.</p>
+      ) : (
+        <Countries countryData={countryData} />
+      )}
     </section>
   );
 };
