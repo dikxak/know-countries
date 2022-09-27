@@ -9,7 +9,7 @@ import ThemeModeContext from '../context/ThemeModeContext/theme-mode-context';
 import '../sass/general.scss';
 import classes from '../sass/pages/CountryDetail.module.scss';
 
-const countryAlphaURL = 'https://restcountries.com/v3.1/alpha/';
+const countryAlphaURL = 'https://restcountries.com/v3.1/name/';
 
 const CountryDetail = () => {
   const themeCtx = useContext(ThemeModeContext);
@@ -19,7 +19,7 @@ const CountryDetail = () => {
   const [countryError, setCountryError] = useState(false);
 
   const { state } = useLocation();
-  const { countryCode } = state;
+  const { countryName } = state;
 
   useEffect(() => {
     const getCountryData = async () => {
@@ -27,7 +27,7 @@ const CountryDetail = () => {
         setCountryError(false);
         setIsLoading(true);
 
-        const response = await fetch(`${countryAlphaURL}${countryCode}`);
+        const response = await fetch(`${countryAlphaURL}${countryName}`);
 
         if (!response.ok) throw new Error('😟 Something went wrong.');
 
@@ -42,7 +42,7 @@ const CountryDetail = () => {
     };
 
     getCountryData();
-  }, [countryCode]);
+  }, [countryName]);
 
   let name,
     population,
