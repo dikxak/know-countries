@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 
 import CountryItem from './CountryItem';
 
-import classes from '../../sass/country/Countries.module.scss';
 import '../../sass/general.scss';
 
 const Countries = props => {
@@ -12,14 +11,14 @@ const Countries = props => {
 
   const data = props.countryData;
 
-  const navigateToDetailPage = (countryCode, countryName) => {
+  const navigateToDetailPage = countryName => {
     navigate(`/country/${countryName.toLowerCase()}`, {
-      state: { countryCode: countryCode.toLowerCase() },
+      state: { countryName: countryName.toLowerCase() },
     });
   };
 
   return (
-    <div className={`${classes['countries']} grid--4-cols`}>
+    <div className="grid--4-cols">
       {data.map(country => {
         return (
           <CountryItem
@@ -31,11 +30,7 @@ const Countries = props => {
             capital={country.capital}
             role="link"
             tabIndex="0"
-            onClick={navigateToDetailPage.bind(
-              null,
-              country.cioc,
-              country.name.common
-            )}
+            onClick={navigateToDetailPage.bind(null, country.name.common)}
           />
         );
       })}
