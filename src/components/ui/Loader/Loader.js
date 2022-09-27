@@ -4,7 +4,7 @@ import ThemeModeContext from '../../../context/ThemeModeContext/theme-mode-conte
 
 import classes from '../../../sass/ui/Loader.module.scss';
 
-const Loader = props => {
+const Loader = () => {
   const themeCtx = useContext(ThemeModeContext);
 
   return (

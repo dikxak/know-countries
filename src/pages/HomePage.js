@@ -3,7 +3,7 @@ import React from 'react';
 import CountryContainer from '../components/country/CountryContainer';
 import Navbar from '../components/ui/Navbar/Navbar';
 
-const HomePage = props => {
+const HomePage = () => {
   return (
     <React.Fragment>
       <Navbar className="light" />
