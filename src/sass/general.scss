@@ -40,3 +40,30 @@
   color: #e03131;
   margin-top: 1.6rem;
 }
+
+/*
+<<< Below 1248px (Landscaped Tablets) >>>
+*/
+@media (max-width: 78em) {
+  .grid--4-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/*
+<<< Below 976px (Tablets & Smaller Tablets) >>>
+*/
+@media (max-width: 61em) {
+  .grid--4-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/*
+<<< Below 496px (Smartphones) >>>
+*/
+@media (max-width: 31em) {
+  .grid--4-cols {
+    grid-template-columns: 1fr;
+  }
+} ;

@@ -7,7 +7,7 @@
 }
 
 .header {
-  padding: 1.6rem 0;
+  padding: 1.6rem 2.4rem;
   box-shadow: 0 0.75rem 1rem rgba(0, 0, 0, 0.15);
 }
 
@@ -23,6 +23,16 @@
 
 .logo {
   font-size: 3rem;
+}
+
+.light.logo a:link,
+.light.logo a:visited {
+  color: var.$light-mode-text;
+}
+
+.dark.logo a:link,
+.dark.logo a:visited {
+  color: var.$dark-mode-text;
 }
 
 .theme-mode {
@@ -77,10 +87,7 @@
   transition: all 0.15s linear;
 }
 
-.theme-mode input:checked ~ .theme-control::after {
-  left: 60%;
-}
-
 .theme-mode input:checked ~ .dark.theme-control::after {
+  left: 60%;
   background-color: var.$dark-mode-bg;
 }

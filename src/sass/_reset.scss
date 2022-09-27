@@ -28,3 +28,21 @@ img {
 a {
   text-decoration: none;
 }
+
+/*
+<<< Below 1248px (Landscaped Tablets) >>>
+*/
+@media (max-width: 78em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+/*
+<<< Below 976px (Tablets & Smaller Tablets) >>>
+*/
+@media (max-width: 61em) {
+  html {
+    font-size: 50%;
+  }
+}

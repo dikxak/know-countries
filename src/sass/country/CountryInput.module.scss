@@ -50,3 +50,21 @@
   width: 2rem;
   height: 2rem;
 }
+
+/*
+<<< Below 496px (Tablets & Smaller Tablets) >>>
+*/
+@media (max-width: 61em) {
+  .search-form {
+    width: 45%;
+  }
+}
+
+/*
+<<< Below 496px (Smartphones) >>>
+*/
+@media (max-width: 31em) {
+  .search-form {
+    width: 100%;
+  }
+}

@@ -81,3 +81,29 @@
   text-align: center;
   margin-top: 8rem;
 }
+
+@media (max-width: 67.2em) {
+  .country-content {
+    column-gap: 4.8rem;
+  }
+}
+
+@media (max-width: 54.7em) {
+  .country-content {
+    grid-template-columns: 1fr;
+  }
+
+  .country-details {
+    gap: 9.6rem;
+  }
+}
+
+/*
+<<< Below 496px (Smartphones) >>>
+*/
+@media (max-width: 31em) {
+  .country-details {
+    flex-direction: column;
+    gap: 4.8rem;
+  }
+} ;
