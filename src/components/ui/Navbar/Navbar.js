@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import ThemeModeContext from '../../../context/ThemeModeContext/theme-mode-context';
 
@@ -18,12 +19,15 @@ const Navbar = () => {
       className={`${classes['header']} ${classes[`${themeCtx.themeMode}`]}`}
     >
       <div className={classes['container']}>
-        <h1 className={classes['logo']}>KnowCountries</h1>
+        <h1 className={`${classes['logo']} ${classes[themeCtx.themeMode]}`}>
+          <NavLink to="/">KnowCountries</NavLink>
+        </h1>
         <div onClick={themeChangeHandler} className={classes['theme-mode']}>
           <span className={classes['theme-mode-text']}>
             {themeCtx.themeMode === 'dark' ? 'Go bright' : 'Go dark'}
           </span>
           <input
+            readOnly={true}
             checked={themeCtx.themeMode === 'dark'}
             type="checkbox"
             tabIndex="-1"
