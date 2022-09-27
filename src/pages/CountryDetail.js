@@ -38,6 +38,7 @@ const CountryDetail = () => {
     nativeName;
 
   if (countryData.length !== 0) {
+    // De-structure all the data from countryData and initialize the variables defined.
     ({
       name,
       flags,
