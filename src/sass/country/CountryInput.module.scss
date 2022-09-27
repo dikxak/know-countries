@@ -7,28 +7,32 @@
 }
 
 .form-control {
-  box-shadow: 0 1rem 1.2rem rgba(0, 0, 0, 0.15);
-  padding-left: 1.6rem;
-  border-radius: 0.5rem;
   @include mix.make-flex(row, 0, flex-start, center);
+  padding-left: 1.6rem;
+
+  box-shadow: 0 1rem 1.2rem rgba(0, 0, 0, 0.15);
+  border-radius: 0.5rem;
 }
 
 .light.form-control {
-  background-color: var.$light-mode-bg;
   color: var.$light-mode-text;
+  background-color: var.$light-mode-bg;
 }
 
 .dark.form-control {
-  background-color: var.$dark-mode-elem;
   color: var.$dark-mode-text;
+  background-color: var.$dark-mode-elem;
 }
 
 .form-control input {
   display: inline-block;
   width: 100%;
-  padding: 1.6rem;
+
   font: inherit;
   font-size: 1.6rem;
+
+  padding: 1.6rem;
+
   border: none;
   background-color: transparent;
 }

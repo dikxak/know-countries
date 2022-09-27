@@ -7,13 +7,13 @@
 }
 
 .light.country-item-container {
-  background-color: var.$light-mode-bg;
   color: var.$light-mode-text;
+  background-color: var.$light-mode-bg;
 }
 
 .dark.country-item-container {
-  background-color: var.$dark-mode-elem;
   color: var.$dark-mode-text;
+  background-color: var.$dark-mode-elem;
 }
 
 .country-flag img {
@@ -26,8 +26,8 @@
 
 .country-name {
   font-size: 2rem;
-  margin-bottom: 2.4rem;
   line-height: 1.2;
+  margin-bottom: 2.4rem;
 }
 
 .country-text {

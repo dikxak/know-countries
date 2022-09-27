@@ -6,7 +6,7 @@ import Navbar from '../components/ui/Navbar/Navbar';
 const HomePage = () => {
   return (
     <React.Fragment>
-      <Navbar className="light" />
+      <Navbar />
       <CountryContainer />
     </React.Fragment>
   );
