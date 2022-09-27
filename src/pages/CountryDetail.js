@@ -91,7 +91,8 @@ const CountryDetail = () => {
                       </p>
 
                       <p className={classes['country-detail-text']}>
-                        <strong>Population: </strong> {population}
+                        <strong>Population: </strong>{' '}
+                        {population.toLocaleString('en-US')}
                       </p>
 
                       <p className={classes['country-detail-text']}>

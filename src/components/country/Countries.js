@@ -25,7 +25,7 @@ const Countries = props => {
             key={`${country.name.common}`}
             flags={country.flags}
             name={country.name}
-            population={country.population}
+            population={country.population.toLocaleString('en-US')}
             region={country.region}
             capital={country.capital}
             role="link"
