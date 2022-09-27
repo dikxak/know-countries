@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 import Navbar from '../components/ui/Navbar/Navbar';
@@ -6,43 +6,24 @@ import Loader from '../components/ui/Loader/Loader';
 
 import ThemeModeContext from '../context/ThemeModeContext/theme-mode-context';
 
+import useHttp from '../hooks/use-http';
+
 import '../sass/general.scss';
 import classes from '../sass/pages/CountryDetail.module.scss';
 
-const countryAlphaURL = 'https://restcountries.com/v3.1/name/';
+const countryNameURL = 'https://restcountries.com/v3.1/name/';
 
 const CountryDetail = () => {
   const themeCtx = useContext(ThemeModeContext);
 
-  const [countryData, setCountryData] = useState();
-  const [isLoading, setIsLoading] = useState();
-  const [countryError, setCountryError] = useState(false);
+  let { countryData, countryError, isLoading, getCountryData } = useHttp();
 
   const { state } = useLocation();
   const { countryName } = state;
 
   useEffect(() => {
-    const getCountryData = async () => {
-      try {
-        setCountryError(false);
-        setIsLoading(true);
-
-        const response = await fetch(`${countryAlphaURL}${countryName}`);
-
-        if (!response.ok) throw new Error('😟 Something went wrong.');
-
-        const data = await response.json();
-
-        setCountryData(data[0]);
-        setIsLoading(false);
-      } catch (err) {
-        setIsLoading(false);
-        setCountryError(true);
-      }
-    };
-
-    getCountryData();
-  }, [countryName]);
+    getCountryData(`${countryNameURL}${countryName}`);
+  }, [getCountryData, countryName]);
 
   let name,
     population,
@@ -56,7 +37,7 @@ const CountryDetail = () => {
     borders,
     nativeName;
 
-  if (countryData) {
+  if (countryData.length !== 0) {
     ({
       name,
       flags,
@@ -68,7 +49,7 @@ const CountryDetail = () => {
       tld: topLevelDomain,
       currencies,
       languages,
-    } = countryData);
+    } = countryData[0]);
 
     nativeName = name.nativeName[Object.keys(name.nativeName)[0]];
   }
@@ -91,7 +72,7 @@ const CountryDetail = () => {
               😟 Could not fetch country data.
             </p>
           ) : (
-            countryData && (
+            countryData.length !== 0 && (
               <div className={classes['country-content']}>
                 <div className={classes['country-flag']}>
                   <img src={flags.svg} alt={`${name.common} flag`} />

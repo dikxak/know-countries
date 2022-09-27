@@ -31,7 +31,7 @@ const CountryInput = props => {
     setSearchQueryFocused(true);
     if (!searchQueryIsValid) return;
 
-    props.getCountryName(searchQuery);
+    props.getCountryDataFromName(searchQuery);
   };
 
   return (

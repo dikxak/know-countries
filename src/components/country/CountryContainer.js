@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
 import CountryInput from './CountryInput';
 import Countries from './Countries';
 import Loader from '../ui/Loader/Loader';
+
+import useHttp from '../../hooks/use-http';
 
 import '../../sass/general.scss';
 import classes from '../../sass/country/CountryContainer.module.scss';
@@ -10,56 +12,24 @@ import classes from '../../sass/country/CountryContainer.module.scss';
 const allCountriesURL = 'https://restcountries.com/v3.1/all';
 const oneCountryURL = 'https://restcountries.com/v3.1/name/';
 
-const CountryContainer = props => {
-  const [countryData, setCountryData] = useState([]);
-  const [countryError, setCountryError] = useState(false);
+const CountryContainer = () => {
+  let { countryData, countryError, isLoading, getCountryData } = useHttp();
 
-  const [isLoading, setIsLoading] = useState(false);
+  ({ countryData, countryError, isLoading, getCountryData } = useHttp());
 
   useEffect(() => {
-    const getAllCountriesData = async () => {
-      try {
-        setIsLoading(true);
+    getCountryData(allCountriesURL);
+  }, [getCountryData]);
 
-        const response = await fetch(allCountriesURL);
-
-        if (!response.ok) throw new Error('Something went wrong 😟.');
-
-        const data = await response.json();
-
-        setCountryData(data);
-        setIsLoading(false);
-      } catch (err) {
-        setCountryError(true);
-        setIsLoading(false);
-      }
-    };
-
-    getAllCountriesData();
-  }, []);
-
-  const getCountryName = async cName => {
-    try {
-      setIsLoading(true);
-      const response = await fetch(`${oneCountryURL}${cName}`);
-
-      if (!response.ok) throw new Error('Something went wrong 😟.');
-
-      const data = await response.json();
-
-      setCountryData(data);
-      setIsLoading(false);
-    } catch (err) {
-      setIsLoading(false);
-      setCountryError(true);
-    }
+  const getCountryDataFromName = cName => {
+    getCountryData(`${oneCountryURL}${cName}`);
   };
 
   return (
     <section
       className={`${classes['countries-section']} ${classes['container']}`}
     >
-      <CountryInput getCountryName={getCountryName} />
+      <CountryInput getCountryDataFromName={getCountryDataFromName} />
       {isLoading ? (
         <Loader />
       ) : countryError ? (
